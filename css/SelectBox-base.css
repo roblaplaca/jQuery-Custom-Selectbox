@@ -1,0 +1,66 @@
+#selectbox-css {
+	display: none;
+}
+.customSelect {			
+	position: relative;			
+}
+.customSelect .selectedValue {
+	border: 1px solid #7f9db9;
+	background: #fff;
+	padding: 1px 2px 2px 2px;
+	zoom:1;
+	cursor: pointer;
+}
+.customSelect .selectList {
+	border: 1px solid #333;
+	z-index: 100;
+	position: absolute;
+	left: -999em;
+	top: -999em;
+}
+
+.select-open .selectList {
+	left: 0 !important;
+	top: auto !important;
+}
+.customSelect .selectList dl {
+	background: #fff;	
+}
+.customSelect .selectList dl.defaultScrollbar {
+	overflow-x: hidden;
+	overflow-y: scroll;	
+}
+.customSelect dl, .customSelect dd {
+	margin: 0;
+}
+.customSelect dd {
+	zoom: 1;
+	cursor: pointer;
+}
+.customSelect dd.hovered {
+	background: #335ea8;
+	color: #fff;
+}
+.customSelect dt {
+	font-weight: bold;
+	font-style: italic;
+}	
+.customSelect dd {
+	padding: 0 5px 0 20px;
+} 
+.hasJS select.custom {
+	position: absolute;
+	left: -999em;
+}
+.focused .selectedValue {
+	border: 1px solid #c00;
+}
+.disabled .selectedValue {
+	border: 1px solid #ccc;
+	color: #ccc;
+	cursor: default;
+}
+.selected {
+	background: #000;
+	color: #fff;
+}

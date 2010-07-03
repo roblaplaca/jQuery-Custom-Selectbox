@@ -1,0 +1,41 @@
+/*
+	These styles are just for the example. The base styles are in SelectBox.css.
+*/	
+body {
+	background: #ccc;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.customSelect .selectedValue {
+	background: #fff url(../img/btn_selectBox.png) no-repeat right -37px;
+}
+/* COUNTRY SELECTBOX */
+#select-countries dd {
+	padding: 0 0 0 5px;
+}	
+dd span, .selectedValue span {
+	position: relative;
+	top: 1px;
+	display: block;
+	height: 12px;
+	width: 20px;
+	float: left;
+	clear: right;
+}
+.selectedValue span {
+	top: 2px;
+	left: 2px;
+}
+/* this should be a sprite... but this is quicker for examples sake */
+dd span.usa, .selectedValue span.usa {
+	background: url("http://www.nike.com/nikeos/global/image/flags/us.png") no-repeat;
+}
+dd span.germany, .selectedValue span.germany {
+	background: url("http://www.nike.com/nikeos/global/image/flags/de.png") no-repeat;
+}
+dd span.france, .selectedValue span.france {
+	background: url("http://www.nike.com/nikeos/global/image/flags/fr.png") no-repeat;
+}
+dd span.italy, .selectedValue span.italy {
+	background: url("http://www.nike.com/nikeos/global/image/flags/it.png") no-repeat;
+}

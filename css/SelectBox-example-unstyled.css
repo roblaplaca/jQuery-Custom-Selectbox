@@ -1,0 +1,6 @@
+.customSelect .selectedValue {
+	background: #fff url(../../img/btn_selectBox.png) no-repeat right -37px;
+}
+.customSelect .selectList dl {
+	width: 181px;
+}

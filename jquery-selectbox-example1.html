@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Custom SelectBox</title>
+<link rel="stylesheet" href="css/jScrollPane-base.css" media="screen" />
+<link rel="stylesheet" href="css/SelectBox-base.css" media="screen" />
+<link rel="stylesheet" href="css/SelectBox-example.css" media="screen" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/jScrollPane.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/SelectBox.js"></script>
+<script type="text/javascript">	
+
+	$(function() {
+		var sb_manager = new $.SelectBoxManager(); 
+				 
+		//console.time("someth");
+		$("select.custom").each(function() {
+			sb_manager.add(
+				new $.SelectBox({
+					selectbox: $(this),
+					height: 150,
+					width: 200,
+					manager: sb_manager,
+					customScrollbar: true
+				})
+			);
+		});
+		//console.timeEnd("someth");
+		
+	});
+</script>
+</head>
+<body class="noJS">
+<script type="text/javascript">
+	var bodyTag = document.getElementsByTagName("body")[0];
+		bodyTag.className = bodyTag.className.replace("noJS", "hasJS");
+</script>
+<select id="country" name="country" class="custom">
+  <optgroup label='Countries'>
+  <option value = "http://www.cala.avaya.com">Argentina</option>
+  <option value = "http://www.avaya.com.au">Australia</option>
+  <option value = "http://www.avaya.at">Austria</option>
+  <option value = "http://www.avaya.be">Belgium</option>
+  <option value = "http://www.avaya.com.br">Brazil</option>
+  <option value = "http://www.avaya.com/ca-en/">Canada - English</option>
+  <option value = "http://www.avaya.com/ca-fr/">Canada - French</option>
+  <option value = "http://www.avaya.com.cn">China</option>
+  <option value = "http://www.avaya.eu/hr">Croatia</option>
+  <option value = "http://www.avaya.cz">Czech Republic</option>
+  <option value = "http://www.avaya.dk">Denmark</option>
+  <option value = "http://www.avaya.fi">Finland</option>
+  <option value = "http://www.avaya.fr">France</option>
+  <option value = "http://www.avaya.de">Germany</option>
+  <option value = "http://www.avaya.gr">Greece</option>
+  <option value = "http://www.avaya.hu">Hungary</option>
+  <option value = "http://www.avaya-apac.com/india/default.asp">India</option>
+  <option value = "http://www.avaya.ie">Ireland</option>
+  <option value = "http://www.avaya.co.il">Israel</option>
+  <option value = "http://www.avaya.it">Italy</option>
+  <option value = "http://www.avaya.co.jp">Japan</option>
+  <option value = "http://www.avaya.co.kr">Korea</option>
+  <option value = "http://www.avaya.com.mx">Mexico</option>
+  <option value = "http://www.avaya.nl">Netherlands</option>
+  <option value = "http://www.avaya.no">Norway</option>
+  <option value = "http://www.avaya.pl">Poland</option>
+  <option value = "http://www.avaya.ru">Russia</option>
+  <option value = "http://www.avaya-apac.com">Singapore</option>
+  <option value = "http://www.avaya.sk">Slovakia</option>
+  <option value = "http://www.avaya.eu/si">Slovenia</option>
+  <option value = "http://www.avaya.es">Spain</option>
+  <option value = "http://www.avaya.co.za">Sub Saharan Africa</option>
+  <option value = "http://www.avaya.se">Sweden</option>
+  <option value = "http://www.avaya.ch/gcm/emea/ch-fr/">Switzerland - French</option>
+  <option value = "http://www.avaya.ch/gcm/emea/ch-de/">Switzerland - German</option>
+  <option value = "http://www.avaya.com.tr">Turkey</option>
+  <option value = "http://www.avaya.co.uk">United Kingdom</option>
+  <option value = "http://www.avaya.com/">United States</option>
+  </optgroup>
+  <optgroup label='Regions'>
+  <option value = "http://www.avaya-apac.com/">APAC</option>
+  <option value = "http://cala.avaya.com">Caribbean, Latin America</option>
+  <option value = "http://www.emea.avaya.com">EMEA</option>
+  <option value = "http://www.avaya.ae">MENA</option>
+  </optgroup>
+  <option value='http://www.avaya.com/gcm/master-usa/en-us/tasks/connect/contacts/worldwide/worldwide.htm'>Worldwide Directory</option>
+</select>
+<br />
+<br />
+<select id="country" name="country" class="custom">
+  <optgroup label='Countries'>
+  <option value = "http://www.cala.avaya.com">Argentina</option>
+  <option value = "http://www.avaya.com.au">Australia</option>
+  <option value = "http://www.avaya.at">Austria</option>
+  <option value = "http://www.avaya.be">Belgium</option>
+  <option value = "http://www.avaya.com.br">Brazil</option>
+  <option value = "http://www.avaya.com/ca-en/">Canada - English</option>
+  <option value = "http://www.avaya.com/ca-fr/">Canada - French</option>
+  <option value = "http://www.avaya.com.cn">China</option>
+  <option value = "http://www.avaya.eu/hr">Croatia</option>
+  <option value = "http://www.avaya.cz">Czech Republic</option>
+  <option value = "http://www.avaya.dk">Denmark</option>
+  <option value = "http://www.avaya.fi">Finland</option>
+  <option value = "http://www.avaya.fr">France</option>
+  <option value = "http://www.avaya.de">Germany</option>
+  <option value = "http://www.avaya.gr">Greece</option>
+  <option value = "http://www.avaya.hu">Hungary</option>
+  <option value = "http://www.avaya-apac.com/india/default.asp">India</option>
+  <option value = "http://www.avaya.ie">Ireland</option>
+  <option value = "http://www.avaya.co.il">Israel</option>
+  <option value = "http://www.avaya.it">Italy</option>
+  <option value = "http://www.avaya.co.jp">Japan</option>
+  <option value = "http://www.avaya.co.kr">Korea</option>
+  <option value = "http://www.avaya.com.mx">Mexico</option>
+  <option value = "http://www.avaya.nl">Netherlands</option>
+  <option value = "http://www.avaya.no">Norway</option>
+  <option value = "http://www.avaya.pl">Poland</option>
+  <option value = "http://www.avaya.ru">Russia</option>
+  <option value = "http://www.avaya-apac.com">Singapore</option>
+  <option value = "http://www.avaya.sk">Slovakia</option>
+  <option value = "http://www.avaya.eu/si">Slovenia</option>
+  <option value = "http://www.avaya.es">Spain</option>
+  <option value = "http://www.avaya.co.za">Sub Saharan Africa</option>
+  <option value = "http://www.avaya.se">Sweden</option>
+  <option value = "http://www.avaya.ch/gcm/emea/ch-fr/">Switzerland - French</option>
+  <option value = "http://www.avaya.ch/gcm/emea/ch-de/">Switzerland - German</option>
+  <option value = "http://www.avaya.com.tr">Turkey</option>
+  <option value = "http://www.avaya.co.uk">United Kingdom</option>
+  <option value = "http://www.avaya.com/" selected="selected">United States</option>
+  </optgroup>
+  <optgroup label='Regions'>
+  <option value = "http://www.avaya-apac.com/">APAC</option>
+  <option value = "http://cala.avaya.com">Caribbean, Latin America</option>
+  <option value = "http://www.emea.avaya.com">EMEA</option>
+  <option value = "http://www.avaya.ae">MENA</option>
+  </optgroup>
+  <option value='http://www.avaya.com/gcm/master-usa/en-us/tasks/connect/contacts/worldwide/worldwide.htm'>Worldwide Directory</option>
+</select>
+<br />
+<br />
+<select name="country" class="custom">
+  <optgroup label='Countries'>
+  <option value = "http://www.cala.avaya.com">Argentina</option>
+  <option value = "http://www.avaya.com.au">Australia</option>
+  <option value = "http://www.avaya.at">Austria</option>
+  <option value = "http://www.avaya.be">Belgium</option>
+  <option value = "http://www.avaya.com.br">Brazil</option>
+  <option value = "http://www.avaya.com/ca-en/">Canada - English</option>
+  <option value = "http://www.avaya.com/ca-fr/">Canada - French</option>
+  <option value = "http://www.avaya.com.cn">China</option>
+  <option value = "http://www.avaya.eu/hr">Croatia</option>
+  <option value = "http://www.avaya.cz">Czech Republic</option>
+  <option value = "http://www.avaya.dk">Denmark</option>
+  <option value = "http://www.avaya.fi">Finland</option>
+  <option value = "http://www.avaya.fr">France</option>
+  <option value = "http://www.avaya.de">Germany</option>
+  <option value = "http://www.avaya.gr">Greece</option>
+  <option value = "http://www.avaya.hu">Hungary</option>
+  <option value = "http://www.avaya-apac.com/india/default.asp">India</option>
+  <option value = "http://www.avaya.ie">Ireland</option>
+  <option value = "http://www.avaya.co.il">Israel</option>
+  <option value = "http://www.avaya.it">Italy</option>
+  <option value = "http://www.avaya.co.jp">Japan</option>
+  <option value = "http://www.avaya.co.kr">Korea</option>
+  <option value = "http://www.avaya.com.mx">Mexico</option>
+  <option value = "http://www.avaya.nl">Netherlands</option>
+  <option value = "http://www.avaya.no">Norway</option>
+  <option value = "http://www.avaya.pl">Poland</option>
+  <option value = "http://www.avaya.ru">Russia</option>
+  <option value = "http://www.avaya-apac.com">Singapore</option>
+  <option value = "http://www.avaya.sk">Slovakia</option>
+  <option value = "http://www.avaya.eu/si">Slovenia</option>
+  <option value = "http://www.avaya.es">Spain</option>
+  <option value = "http://www.avaya.co.za">Sub Saharan Africa</option>
+  <option value = "http://www.avaya.se">Sweden</option>
+  <option value = "http://www.avaya.ch/gcm/emea/ch-fr/">Switzerland - French</option>
+  <option value = "http://www.avaya.ch/gcm/emea/ch-de/">Switzerland - German</option>
+  <option value = "http://www.avaya.com.tr">Turkey</option>
+  <option value = "http://www.avaya.co.uk">United Kingdom</option>
+  <option value = "http://www.avaya.com/" selected="selected">United States</option>
+  </optgroup>
+  <optgroup label='Regions'>
+  <option value = "http://www.avaya-apac.com/">APAC</option>
+  <option value = "http://cala.avaya.com">Caribbean, Latin America</option>
+  <option value = "http://www.emea.avaya.com">EMEA</option>
+  <option value = "http://www.avaya.ae">MENA</option>
+  </optgroup>
+  <option value='http://www.avaya.com/gcm/master-usa/en-us/tasks/connect/contacts/worldwide/worldwide.htm'>Worldwide Directory</option>
+</select>
+<br />
+<br />
+<select class="custom">
+  <option>test</option>
+  <option>test 2</option>
+</select>
+<br />
+<br />
+<select class="custom" id="countries">
+  <option class="usa">USA</option>
+  <option class="italy">Italy</option>
+  <option class="france">France</option>
+  <option class="germany usa">Germany</option>
+</select>
+</body>
+</html>

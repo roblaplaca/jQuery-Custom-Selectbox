@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Custom SelectBox</title>
+<link rel="stylesheet" href="css/jScrollPane-base.css" media="screen" />
+<link rel="stylesheet" href="css/SelectBox-base.css" media="screen" />
+<link rel="stylesheet" href="css/SelectBox-example.css" media="screen" />
+<style type="text/css">
+	/*
+		These styles are just for the example. The base styles are in SelectBox.css.
+	*/	
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+	}
+	.customSelect {
+		float: left;
+		margin-right: 20px;
+	}		
+	.customSelect .selectedValue {
+		background: #fff url(img/btn_selectBox.png) no-repeat right -37px;
+	}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/jScrollPane.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/SelectBox.js"></script>
+<script type="text/javascript">	
+	$(function() {
+		if($.global == undefined) $.global = {};
+		
+		$.global.SelectBoxManager = new $.SelectBoxManager();
+		
+		var cities = {
+			selectone: ["Select a city"],
+			usa: ["new york", "denver", "austin", "los angeles", "jersey city"],
+			italy: ["rome", "palermo", "venice", "florence"],
+			france: ["paris", "cognac"],
+			germany: ["berlin", "rotterdam", "dresden"]
+		}
+		//console.time("someth");
+		var defaultSettings = {
+			height: 150,
+			width: 200,
+			manager: $.global.SelectBoxManager,
+			customScrollbar: true
+		};
+		
+		var country_SB = null, 
+			city_SB = null;
+			
+		$("select.custom").each(function() {
+			if($(this).attr("id") == "countries") {
+				country_SB = new $.SelectBox($.extend(defaultSettings, {
+					selectbox: $(this),
+					width: $(this).width() + 20,
+					changeCallback: function(val) {
+						if(cities[val]) {
+							city_SB.enable();
+							updateCities(val);
+						}
+						if(val == "selectone") {
+							city_SB.disable();
+						}
+					}
+				}));
+				$.global.SelectBoxManager.add(country_SB);
+			} else if($(this).attr("id") == "cities") {
+				city_SB = new $.SelectBox($.extend(defaultSettings, {
+					selectbox: $(this),
+					width: $(this).width() + 20
+				}));
+				$.global.SelectBoxManager.add(city_SB);
+			}
+		});
+		
+		updateCities($("#countries").val());
+		if($("#countries").val() == "selectone") {
+			city_SB.disable();
+		}
+		
+		function updateCities(val) {
+			var $select = $("select#cities"),
+				html = "";
+				
+			for(var i=0; i<cities[val].length; i++) {
+				html += '<option>'+cities[val][i]+'</option>';
+			}
+			$select.html(html);
+			
+			// HACK: silly chrome is too fast?
+			setTimeout(function() {
+				city_SB.sync();
+			}, 1);
+		}	
+		//console.timeEnd("someth");
+		
+	});
+</script>
+</head>
+<body class="noJS">
+<script type="text/javascript">
+	var bodyTag = document.getElementsByTagName("body")[0];
+		bodyTag.className = bodyTag.className.replace("noJS", "hasJS");
+</script>
+
+<select class="custom" id="countries">
+  <option value="selectone">Select a country</option>
+  <option class="usa" value="usa">USA</option>
+  <option class="italy" value="italy">Italy</option>
+  <option class="france" value="france">France</option>
+  <option class="germany usa" value="germany">Germany</option>
+</select>
+
+<select class="custom" id="cities">
+  <option>USA</option>
+  <option>Italy</option>
+  <option>France</option>
+  <option>Germany</option>
+</select>
+</body>
+</html>
