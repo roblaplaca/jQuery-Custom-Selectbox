@@ -28,14 +28,14 @@ dd span, .selectedValue span {
 }
 /* this should be a sprite... but this is quicker for examples sake */
 dd span.usa, .selectedValue span.usa {
-	background: url("http://www.nike.com/nikeos/global/image/flags/us.png") no-repeat;
+	background: url("../img/us.png") no-repeat;
 }
 dd span.germany, .selectedValue span.germany {
-	background: url("http://www.nike.com/nikeos/global/image/flags/de.png") no-repeat;
+	background: url("../img/de.png") no-repeat;
 }
 dd span.france, .selectedValue span.france {
-	background: url("http://www.nike.com/nikeos/global/image/flags/fr.png") no-repeat;
+	background: url("../img/fr.png") no-repeat;
 }
 dd span.italy, .selectedValue span.italy {
-	background: url("http://www.nike.com/nikeos/global/image/flags/it.png") no-repeat;
+	background: url("../img/it.png") no-repeat;
 }
