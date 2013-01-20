@@ -3,6 +3,9 @@ jQuery Custom Selectbox
 
 SelectBox replacement using jQuery. Hides the selectbox and replaces it with an easy to style css version.  
 
+![example selectbox](http://roblaplaca.com/blog/wp-content/uploads/2013/01/Screen-shot-2013-01-20-at-5.25.36-PM.png)
+![example selectbox](http://roblaplaca.com/blog/wp-content/uploads/2013/01/Screen-shot-2013-01-20-at-5.24.45-PM.png)
+
 Features include:
 
 * **Custom scrollbar** - by default custom scrollbars using jScrollPane are enabled. You can also use the default browser one, but that doesn't look nice.
