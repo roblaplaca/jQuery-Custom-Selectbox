@@ -90,7 +90,7 @@
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }
-.customSelect dd.hovered {
+.customSelect .selectList dd.hovered {
 	background: #999;
 	color: #fff;
 }
