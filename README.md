@@ -1,8 +1,7 @@
 jQuery Custom Selectbox
 =======================
 
-SelectBox replacement using jQuery. Hides the selectbox and replaces it with an accessible js version.  
-All you need to do is style it. 
+SelectBox replacement using jQuery. Hides the selectbox and replaces it with an easy to style css version.  
 
 Features include:
 
