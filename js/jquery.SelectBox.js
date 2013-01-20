@@ -239,7 +239,7 @@
 				_bindHover();
 				_setupScrollbar();
 			};
-			
+
 			this.disable = function() {
 				_isEnabled = false;
 				$customSelect.addClass("disabled");
@@ -265,6 +265,8 @@
 				}
 				
 				$customSelect.addClass("select-open");
+				
+				// TODO: figure out of this is still needed, it broke when upgrading dependencies
 				if(self.scrollpane) { 
 					// self.scrollpane[0].scrollTo($customSelect.find(".selected").position().top); 
 				}
