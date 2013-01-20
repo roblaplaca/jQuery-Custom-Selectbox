@@ -266,7 +266,6 @@
 				
 				$customSelect.addClass("select-open");
 				if(self.scrollpane) { 
-					console.log(self.scrollpane);
 					// self.scrollpane[0].scrollTo($customSelect.find(".selected").position().top); 
 				}
 				
