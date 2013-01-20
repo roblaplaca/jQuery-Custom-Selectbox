@@ -49,7 +49,7 @@
 		var self = this,
 		cfg = $.extend(true, {
 			manager: sb_manager,
-			customScrollbar: false,
+			customScrollbar: true,
 			zIndex: 100,
 			changeCallback: function(val) { },
 			truncate: function(str) {return str;},
