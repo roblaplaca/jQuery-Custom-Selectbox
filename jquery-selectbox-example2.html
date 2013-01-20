@@ -5,19 +5,16 @@
 	<link rel="stylesheet" href="css/jScrollPane-base.css" />
 	<link rel="stylesheet" href="css/SelectBox-base.css" />
 	<link rel="stylesheet" href="css/SelectBox-example.css" />
-	<style type="text/css">
-		/*
-			These styles are just for the example. The base styles are in SelectBox.css.
-		*/	
-		.cities dd { padding: 0 5px; }
-	</style>
 </head>
-<body class="noJS">
-	<script type="text/javascript">
+<body class="noJS" id="example-2">
+	<script>
 		var bodyTag = document.getElementsByTagName("body")[0];
 			bodyTag.className = bodyTag.className.replace("noJS", "hasJS");
 	</script>
-
+	
+	<h1>Custom SelectBox</h1>
+	<p>This example is using the change callback as well as custom id's for the selects so they can get custom behavior</p>
+	
 	<select class="custom" id="countries">
 	  <option value="selectone">Select a country</option>
 	  <option class="usa" value="usa">USA</option>

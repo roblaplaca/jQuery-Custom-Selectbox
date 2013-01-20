@@ -1,7 +1,15 @@
 /*
 	These styles are just for the example. The base styles are in SelectBox.css.
 */	
+body { font-family: "Lucida Grande", Arial, Helvetica, sans-serif; }
+h1 { font-size: 24px; line-height: 1; }
+h2 { font-size: 16px; }
+p { font-size: 12px; }
+#example-1 .customSelect { clear: both; margin-bottom: 10px; }
+#example-2 .cities dd { padding: 0 5px; }
+
 /* COUNTRY SELECTBOX */
+/* This should be a sprite... but this is quicker for examples sake */
 dd span, .selectedValue span {
 	position: relative;
 	top: 2px;
@@ -11,7 +19,6 @@ dd span, .selectedValue span {
 	float: left;
 	clear: right;
 }
-/* This should be a sprite... but this is quicker for examples sake */
 dd span.usa, .selectedValue span.usa {
 	background: url("../img/us.png") no-repeat;
 }
