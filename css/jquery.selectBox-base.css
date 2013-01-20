@@ -78,7 +78,7 @@
 	zoom: 1;
 	cursor: pointer;
 }
-.customSelect dd.hovered {
+.customSelect .selected {
 	color: #ffffff;
 	text-decoration: none;
 	background-color: #0081c2;
@@ -89,6 +89,10 @@
 	background-image: linear-gradient(to bottom, #0088cc, #0077b3);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+.customSelect dd.hovered {
+	background: #999;
+	color: #fff;
 }
 .customSelect dt {
 	font-weight: bold;
@@ -109,10 +113,6 @@
 	border: 1px solid #ccc;
 	color: #ccc;
 	cursor: default;
-}
-.customSelect .selected {
-	background: #999;
-	color: #fff;
 }
 .customSelect .caret {
 	display: inline-block;
