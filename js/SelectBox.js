@@ -7,7 +7,7 @@
  *
  * @author				Rob LaPlaca - rob.laplaca@gmail.com
  * @date				04/05/2010
- * @lastUpdate			04/05/2010 
+ * @lastUpdate			01/20/2013 
  * @dependency			jScrollPane.js			optional
  * 						jquery.mousewheel.js	optional
  * 
@@ -22,7 +22,7 @@
 (function($){
 	var undefined;
 
-	$.SelectBoxManager = function(options){
+	window.SelectBoxManager = function(options){
 		var sbs = [], 
 			self = this;
 			
@@ -42,10 +42,13 @@
 			});
 		};
 	};
-
-	$.SelectBox = function(options){
+	
+	var sb_manager = new SelectBoxManager(); 
+	
+	window.SelectBox = function(options){
 		var self = this,
 		cfg = $.extend(true, {
+			manager: sb_manager,
 			customScrollbar: false,
 			zIndex: 100,
 			changeCallback: function(val) { },
@@ -59,7 +62,7 @@
 			_isFocused = false,
 			_selectedValue = "";
 		
-		function init(){
+		function init() {
 			var selectId = "";
 			if(cfg.selectbox.attr("id") != "") {
 				selectId = 'id="select-'+cfg.selectbox.attr("id")+'"';
@@ -73,7 +76,7 @@
 			selectListHTML.push(_renderOptions());
 			selectListHTML.push('</dl><div class="selectListBottom"></div></div></div></div>');
 			
-			$customSelect.append('<div class="selectValueWrap"><div class="selectedValue">'+_selectedValue+'</div></div>' + selectListHTML.join(""));
+			$customSelect.append('<div class="selectValueWrap"><div class="selectedValue">'+_selectedValue+'</div> <span class="caret"></span> </div>' + selectListHTML.join(""));
 			
 			$dl = $customSelect.find("dl");
 			$selectedValue = $customSelect.find(".selectedValue");
@@ -81,10 +84,11 @@
 			$selectList = $customSelect.find(".selectList");
 			
 			$customSelect.width(cfg.width);
-			$dl.width(cfg.width);
+			$dl.width(cfg.width - 2);
 
 			_bindEvents();
-
+			
+			sb_manager.add(self);
 		}
 		
 		/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -204,7 +208,9 @@
 			if(cfg.height && $dl.height() > cfg.height) {
 				$dl.css("height", cfg.height);
 				if(cfg.customScrollbar) {
-					self.scrollpane = $dl.jScrollPane($.extend({tabIndex: -1, scrollbarMargin: 0}, cfg.scrollOptions));					
+					self.scrollpane = $dl.jScrollPane($.extend({
+						contentWidth: 200
+					}, cfg.scrollOptions));					
 				} else {
 					$dl.addClass("defaultScrollbar");	
 				}
@@ -260,7 +266,8 @@
 				
 				$customSelect.addClass("select-open");
 				if(self.scrollpane) { 
-					self.scrollpane[0].scrollTo($customSelect.find(".selected").position().top); 
+					console.log(self.scrollpane);
+					// self.scrollpane[0].scrollTo($customSelect.find(".selected").position().top); 
 				}
 				
 				$customSelect.css({"z-index": cfg.zIndex + 1});

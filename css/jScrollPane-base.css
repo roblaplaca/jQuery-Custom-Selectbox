@@ -1,67 +1,119 @@
-#jscrollpane-css {
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+
+.jspPane
+{
+	position: absolute;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 16px;
+	height: 100%;
+	background: red;
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: red;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
 	display: none;
 }
-.jScrollPaneContainer {
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+	background: #dde;
 	position: relative;
-	overflow: hidden;
-	z-index: 1;
 }
 
-.jScrollPaneTrack {
-	position: absolute;
-	cursor: pointer;
-	right: 0;
+.jspDrag
+{
+	background: #bbd;
+	position: relative;
 	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
 	height: 100%;
-	background: #aaa;
-}
-.jScrollPaneDrag {
-	position: absolute;
-	background: #666;
-	cursor: pointer;
-	overflow: hidden;
-}
-.jScrollPaneDragTop {
-	position: absolute;
-	top: 0;
-	left: 0;
-	overflow: hidden;
-}
-.jScrollPaneDragBottom {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	overflow: hidden;
-}
-a.jScrollArrowUp {
-	display: block;
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	right: 0;
-	text-indent: -2000px;
-	overflow: hidden;
-	/*background-color: #666;*/
-	height: 9px;
-}
-a.jScrollArrowUp:hover {
-	/*background-color: #f60;*/
 }
 
-a.jScrollArrowDown {
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
 	display: block;
-	position: absolute;
-	z-index: 1;
-	bottom: 0;
-	right: 0;
-	text-indent: -2000px;
-	overflow: hidden;
-	/*background-color: #666;*/
-	height: 9px;
+	cursor: pointer;
 }
-a.jScrollArrowDown:hover {
-	/*background-color: #f60;*/
+
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
 }
-a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
-	/*background-color: #f00;*/
+
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+	margin: 0 -3px 0 0;
 }
