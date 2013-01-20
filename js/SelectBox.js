@@ -64,7 +64,7 @@
 		
 		function init() {
 			var selectId = "";
-			if(cfg.selectbox.attr("id") != "") {
+			if(typeof cfg.selectbox.attr("id") !== "undefined") {
 				selectId = 'id="select-'+cfg.selectbox.attr("id")+'"';
 			}
 			cfg.selectbox.wrap('<div class="customSelect" '+selectId+' />');
