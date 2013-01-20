@@ -2,50 +2,12 @@
 	display: none;
 }
 .customSelect { 
+	position: relative;			
 	font-size: 12px;
 	font-family: "Lucida Grande", Arial, Helvetica, sans-serif; 
 	float: left;
 	margin-right: 10px;
 }		
-.jspPane {
-	overflow-x: hidden;
-}
-.customSelect .jspVerticalBar {
-	background: none;
-	width: 8px;
-}
-.customSelect .jspHorizontalBar {
-	height: 0;
-	overflow: hidden;
-}
-.customSelect .jspTrack {
-	background: none;
-	right: 5px;
-	border-radius: 5px;
-}
-.customSelect .jspDrag {
-	border-radius: 5px;
-	color: #ffffff;
-	
-	opacity: .5;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #363636;
-	*background-color: #222222;
-	background-image: -moz-linear-gradient(top, #444444, #222222);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
-	background-image: -webkit-linear-gradient(top, #444444, #222222);
-	background-image: -o-linear-gradient(top, #444444, #222222);
-	background-image: linear-gradient(to bottom, #444444, #222222);
-	background-repeat: repeat-x;
-	border-color: #222222 #222222 #000000;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
-
-.customSelect {			
-	position: relative;			
-}
 .customSelect .selectedValue {
   padding: 5px 10px;
   margin-bottom: 0;
@@ -102,7 +64,7 @@
           background-clip: padding-box;
 }
 
-.select-open .selectList {
+.customSelect.select-open .selectList {
 	left: 0 !important;
 	top: auto !important;
 }
@@ -144,19 +106,19 @@
 	position: absolute;
 	left: -999em;
 }
-.focused .selectedValue {
+.customSelect.focused .selectedValue {
 	box-shadow: 0 0 2px #00aedb;
 }
-.disabled .selectedValue {
+.customSelect.disabled .selectedValue {
 	border: 1px solid #ccc;
 	color: #ccc;
 	cursor: default;
 }
-.selected {
+.customSelect .selected {
 	background: #999;
 	color: #fff;
 }
-.caret {
+.customSelect .caret {
 	display: inline-block;
 	width: 0;
 	height: 0;
@@ -166,9 +128,44 @@
 	border-left: 4px solid transparent;
 	content: "";
 }
-.selectValueWrap .caret {
+.customSelect .selectValueWrap .caret {
 	position: absolute;
 	top: 12px;
 	right: 10px;
 	cursor: pointer;
+}
+.customSelect .jspPane {
+	overflow-x: hidden;
+}
+.customSelect .jspVerticalBar {
+	background: none;
+	width: 8px;
+}
+.customSelect .jspHorizontalBar {
+	height: 0;
+	overflow: hidden;
+}
+.customSelect .jspTrack {
+	background: none;
+	right: 5px;
+	border-radius: 5px;
+}
+.customSelect .jspDrag {
+	border-radius: 5px;
+	color: #ffffff;
+	
+	opacity: .5;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #363636;
+	*background-color: #222222;
+	background-image: -moz-linear-gradient(top, #444444, #222222);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+	background-image: -webkit-linear-gradient(top, #444444, #222222);
+	background-image: -o-linear-gradient(top, #444444, #222222);
+	background-image: linear-gradient(to bottom, #444444, #222222);
+	background-repeat: repeat-x;
+	border-color: #222222 #222222 #000000;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
