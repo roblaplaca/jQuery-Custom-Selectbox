@@ -235,7 +235,6 @@
 			this.sync = function() {
 				$options = cfg.selectbox.find("option");
 				$dl.html(_renderOptions());
-				$dl.jScrollPaneRemove();
 				_bindHover();
 				_setupScrollbar();
 			};
