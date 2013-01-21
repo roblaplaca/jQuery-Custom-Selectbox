@@ -1,101 +1,101 @@
 <!doctype html>
 <html>
-<head>
-	<title>Custom SelectBox</title>
-	<link rel="stylesheet" href="css/jquery.jscrollpane.css" />
-	<link rel="stylesheet" href="css/jquery.selectBox.css" />
-	<!-- example.css is throwaway code for demoing -->
-	<link rel="stylesheet" href="css/example.css" />
-</head>
-<body class="noJS" id="example-2">
-	<script>
-		var bodyTag = document.getElementsByTagName("body")[0];
-			bodyTag.className = bodyTag.className.replace("noJS", "hasJS");
-	</script>
+	<head>
+		<title>Custom SelectBox</title>
+		<link rel="stylesheet" href="css/jquery.jscrollpane.css" />
+		<link rel="stylesheet" href="css/customSelectBox.css" />
+		<!-- example.css is throwaway code for demoing -->
+		<link rel="stylesheet" href="css/example.css" />
+	</head>
+	<body class="noJS" id="example-2">
+		<script>
+			var bodyTag = document.getElementsByTagName("body")[0];
+				bodyTag.className = bodyTag.className.replace("noJS", "hasJS");
+		</script>
 	
-	<h1>Custom SelectBox</h1>
-	<p>This example is using the change callback as well as custom id's for the selects so they can get custom behavior</p>
+		<h1>Custom SelectBox</h1>
+		<p>This example is using the change callback as well as custom id's for the selects so they can get custom behavior</p>
 	
-	<select class="custom" id="countries">
-	  <option value="selectone">Select a country</option>
-	  <option class="usa" value="usa">USA</option>
-	  <option class="italy" value="italy">Italy</option>
-	  <option class="france" value="france">France</option>
-	  <option class="germany" value="germany">Germany</option>
-	</select>
+		<select class="custom" id="countries">
+		  <option value="selectone">Select a country</option>
+		  <option class="usa" value="usa">USA</option>
+		  <option class="italy" value="italy">Italy</option>
+		  <option class="france" value="france">France</option>
+		  <option class="germany" value="germany">Germany</option>
+		</select>
 
-	<select class="custom" id="cities">
-	  <option>USA</option>
-	  <option>Italy</option>
-	  <option>France</option>
-	  <option>Germany</option>
-	</select>
+		<select class="custom" id="cities">
+		  <option>USA</option>
+		  <option>Italy</option>
+		  <option>France</option>
+		  <option>Germany</option>
+		</select>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-	<script src="js/jScrollPane.js"></script>
-	<script src="js/jquery.mousewheel.js"></script>
-	<script src="js/jquery.SelectBox.js"></script>
-	<script>	
-		$(function() {
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="js/jScrollPane.js"></script>
+		<script src="js/jquery.mousewheel.js"></script>
+		<script src="js/SelectBox.js"></script>
+		<script>	
+			$(function() {
 	
-			var cities = {
-				selectone: ["Select a city"],
-				usa: ["New York", "Austin", "Los Angeles", "Jersey City"],
-				italy: ["Rome", "Palermo", "Venice", "Florence"],
-				france: ["Paris", "Cognac"],
-				germany: ["Berlin", "Rotterdam", "Dresden"]
-			}
-
-			var defaultSelectboxSettings = {
-				height: 150,
-				width: 150
-			};
-		
-			var country_SB = null, 
-				city_SB = null;
-			
-			$("select.custom").each(function() {
-				if($(this).attr("id") == "countries") {
-					country_SB = new SelectBox($.extend(defaultSelectboxSettings, {
-						selectbox: $(this),
-						changeCallback: function(val) {
-							if(cities[val]) {
-								city_SB.enable();
-								updateCities(val);
-							}
-							if(val == "selectone") {
-								city_SB.disable();
-							}
-						}
-					}));
-				} else if( $(this).attr("id") === "cities" ) {
-					city_SB = new SelectBox($.extend(defaultSelectboxSettings, {
-						selectbox: $(this)
-					}));
+				var cities = {
+					selectone: ["Select a city"],
+					usa: ["New York", "Austin", "Los Angeles", "Jersey City"],
+					italy: ["Rome", "Palermo", "Venice", "Florence"],
+					france: ["Paris", "Cognac"],
+					germany: ["Berlin", "Rotterdam", "Dresden"]
 				}
-			});
+
+				var defaultSelectboxSettings = {
+					height: 150,
+					width: 150
+				};
 		
-			updateCities($("#countries").val());
+				var country_SB = null, 
+					city_SB = null;
 			
-			if($("#countries").val() == "selectone") {
-				city_SB.disable();
-			}
+				$("select.custom").each(function() {
+					if($(this).attr("id") == "countries") {
+						country_SB = new SelectBox($.extend(defaultSelectboxSettings, {
+							selectbox: $(this),
+							changeCallback: function(val) {
+								if(cities[val]) {
+									city_SB.enable();
+									updateCities(val);
+								}
+								if(val == "selectone") {
+									city_SB.disable();
+								}
+							}
+						}));
+					} else if( $(this).attr("id") === "cities" ) {
+						city_SB = new SelectBox($.extend(defaultSelectboxSettings, {
+							selectbox: $(this)
+						}));
+					}
+				});
 		
-			function updateCities(val) {
-				var $select = $("select#cities"),
-					html = "";
+				updateCities($("#countries").val());
+			
+				if($("#countries").val() == "selectone") {
+					city_SB.disable();
+				}
+		
+				function updateCities(val) {
+					var $select = $("select#cities"),
+						html = "";
 				
-				for(var i=0; i<cities[val].length; i++) {
-					html += '<option>'+cities[val][i]+'</option>';
-				}
-				$select.html(html);
+					for(var i=0; i<cities[val].length; i++) {
+						html += '<option>'+cities[val][i]+'</option>';
+					}
+					$select.html(html);
 			
-				// HACK: chrome is too fast?
-				setTimeout(function() {
-					city_SB.sync();
-				}, 1);
-			}		
-		});
-	</script>
-</body>
+					// HACK: chrome is too fast?
+					setTimeout(function() {
+						city_SB.sync();
+					}, 1);
+				}		
+			});
+		</script>
+	</body>
 </html>
