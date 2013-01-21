@@ -1,4 +1,4 @@
-jQuery Custom Selectbox
+Custom Selectbox
 =======================
 
 SelectBox replacement using jQuery. Hides the selectbox and replaces it with an easy to style css version.  
