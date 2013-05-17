@@ -143,10 +143,10 @@
 		
 		function _bindHover() {
 			var $dds = $(".customSelect dd");
-			$dds.die("mouseover");
-			$dds.die("mouseout");
+			$dds.off("mouseover");
+			$dds.off("mouseout");
 			
-			$dds.live("mouseover", function(e) {
+			$dds.on("mouseover", function(e) {
 				var $target = $(e.target);
 				if(e.target.tagName.toLowerCase() != "dd") {
 					$target = $target.parents("dd");
@@ -154,7 +154,7 @@
 				$target.addClass("hovered");														
 			});
 
-			$dds.live("mouseout", function(e) {
+			$dds.on("mouseout", function(e) {
 				var $target = $(e.target);
 				if(e.target.tagName.toLowerCase() != "dd") {
 					$target = $target.parents("dd");	
