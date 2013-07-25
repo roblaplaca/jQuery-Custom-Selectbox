@@ -7,7 +7,7 @@
  *
  * @author				Rob LaPlaca - rob.laplaca@gmail.com
  * @date				04/05/2010
- * @lastUpdate			01/20/2013 
+ * @lastUpdate			07/25/2013 
  * @dependency			jScrollPane.js			optional
  * 						jquery.mousewheel.js	optional
  * 
@@ -57,12 +57,16 @@
 		}, options);
 		
 		var $customSelect, $selectedValue, $selectValueWrap, $selectList, $dl, $options,
+			_useDefaultBehavior = false,
 			_isOpen = false, 
 			_isEnabled = true,
 			_isFocused = false,
 			_selectedValue = "";
 		
 		function init() {
+
+			_useDefaultBehavior = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i)) ? true : false;
+
 			var selectId = "";
 			if(typeof cfg.selectbox.attr("id") !== "undefined") {
 				selectId = 'id="select-'+cfg.selectbox.attr("id")+'"';
@@ -100,7 +104,11 @@
 					cfg.selectbox.focus();
 					self.close();
 				} else if(_isEnabled) {
-					self.open();
+					if( _useDefaultBehavior ) {
+						cfg.selectbox.focus();	
+					} else {
+						self.open();
+					}
 				}
 			});
 			
@@ -111,11 +119,15 @@
 					if(e.target.tagName.toLowerCase() != "dd") {
 						$target = $target.parents("dd");	
 					}  
+
 					if($target.get(0)) {
-					self.jumpToIndex($target.get(0).className.split(" ")[0].split("-")[1]);
-				
-					self.close();
-					cfg.selectbox.focus();
+						self.jumpToIndex($target.get(0).className.split(" ")[0].split("-")[1]);
+					
+						self.close();
+
+						if( ! _useDefaultBehavior ) {
+							cfg.selectbox.focus();	
+						}
 					}
 				}				
 			});
@@ -127,6 +139,12 @@
 				_isFocused = false;
 				$customSelect.removeClass("focused");
 			});
+
+			if( _useDefaultBehavior ) {
+				cfg.selectbox.change(function(e) {
+					_updateValue( $(this).find("option:selected").html() );
+				});
+			}
 
 			cfg.selectbox.keyup(function(e){
 				self.close();
@@ -150,14 +168,14 @@
 				var $target = $(e.target);
 				if(e.target.tagName.toLowerCase() != "dd") {
 					$target = $target.parents("dd");
-				}								   
-				$target.addClass("hovered");														
+				}   
+				$target.addClass("hovered");
 			});
 
 			$dds.on("mouseout", function(e) {
 				var $target = $(e.target);
 				if(e.target.tagName.toLowerCase() != "dd") {
-					$target = $target.parents("dd");	
+					$target = $target.parents("dd");
 				}
 				$target.removeClass("hovered");
 			});
