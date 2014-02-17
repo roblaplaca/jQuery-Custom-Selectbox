@@ -283,9 +283,8 @@
 				
 				$customSelect.addClass("select-open");
 				
-				// TODO: figure out of this is still needed, it broke when upgrading dependencies
 				if(self.scrollpane) { 
-					// self.scrollpane[0].scrollTo($customSelect.find(".selected").position().top); 
+					self.scrollpane.data('jsp').scrollToY($customSelect.find(".selected").position().top);
 				}
 				
 				$customSelect.css({"z-index": cfg.zIndex + 1});
