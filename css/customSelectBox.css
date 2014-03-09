@@ -78,6 +78,10 @@
 	zoom: 1;
 	cursor: pointer;
 }
+.customSelect .disabled {
+	color: #999;
+	cursor: default;
+}
 .customSelect .selected {
 	color: #ffffff;
 	text-decoration: none;
@@ -94,6 +98,10 @@
 	background: #999;
 	color: #fff;
 }
+.customSelect .selectList dd.disabled.hovered {
+	background: none;
+	color: #999;
+}
 .customSelect dt {
 	font-weight: bold;
 	font-style: italic;
@@ -105,6 +113,18 @@
 .hasJS select.custom {
 	position: absolute;
 	left: -999em;
+}
+.hasJS select.custom.use-default {
+	position: absolute;
+	left: auto;
+	height: auto;
+	width: 100%;
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	opacity: 0;
+	/* prevents iOS from zooming in on field */
+	font-size: 16px;
 }
 .customSelect.focused .selectedValue {
 	box-shadow: 0 0 2px #00aedb;

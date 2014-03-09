@@ -72,7 +72,11 @@
 
 		function init() {
 			// TODO: don't use userAgent matching to detect defaulting to device specific behavior
-			_useDefaultBehavior = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i)) ? true : false;
+			_useDefaultBehavior = navigator.userAgent.match(/iPad|iPhone|Android|IEMobile|BlackBerry/i) ? true : false;
+
+			if( _useDefaultBehavior ) {
+				cfg.selectbox.addClass("use-default");
+			}
 
 			var selectId = "";
 			if(typeof cfg.selectbox.attr("id") !== "undefined") {
@@ -123,12 +127,13 @@
 			// delegated events
 			$dl.click(function(e) {
 				var $target = $(e.target);
+
 				if($target.is("dd") || $target.parents("dd")) {
 					if(e.target.tagName.toLowerCase() != "dd") {
 						$target = $target.parents("dd");
 					}
 
-					if($target.get(0)) {
+					if(!$target.hasClass(DISABLED_CLASS) && $target.get(0)) {
 						self.jumpToIndex($target.get(0).className.split(" ")[0].split("-")[1]);
 						self.close();
 
@@ -215,24 +220,33 @@
 			$options.each(function(i, itm) {
 				var $this = $(this),
 					optgroup = $this.parents('optgroup'),
+					addlOptClasses = "",
 					iconMarkup = "";
 
+				// render optgroups if present in original select
 				if (optgroup.length > 0 && $this.prev().length === 0){
 					optionHTML.push('<dt>'+optgroup.attr('label')+'</dt>');
 				}
 
+				// if option has a classname add that to custom select as well
 				if(itm.className !== "") {
 					$(itm.className.split(" ")).each(function() {
 						iconMarkup += '<span class="' + this + '"></span>';
 					});
 				}
 
-				if(itm.selected) {
+				// add selected class to whatever option is currently active
+				if(itm.selected && !itm.disabled) {
 					_selectedValue = iconMarkup + _truncate($(itm).html());
-					optionHTML.push('<dd class="itm-'+i+' selected">' + iconMarkup + itm.innerHTML + '</dd>');
-				} else {
-					optionHTML.push('<dd class="itm-'+i+'">' + iconMarkup + itm.innerHTML + '</dd>');
+					addlOptClasses = " " + SELECTED_CLASS;
 				}
+
+				// Check for disabled options
+				if( itm.disabled ) {
+					addlOptClasses += " " + DISABLED_CLASS;
+				}
+
+				optionHTML.push('<dd class="itm-'+i+' ' + addlOptClasses + '">' + iconMarkup + itm.innerHTML + '</dd>');
 			});
 
 			if($selectedValue && $selectedValue.get(0) !== null) {
