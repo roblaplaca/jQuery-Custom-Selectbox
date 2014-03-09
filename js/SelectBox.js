@@ -55,6 +55,11 @@
 		}, options);
 
 		var $customSelect, $selectedValue, $selectValueWrap, $selectList, $dl, $options,
+			FOCUSED_CLASS = "focused",
+			SELECTED_CLASS = "selected",
+			SELECT_OPEN_CLASS = "select-open",
+			DISABLED_CLASS = "disabled",
+			HOVERED_CLASS = "hovered",
 			_useDefaultBehavior = false,
 			_isOpen = false,
 			_isEnabled = true,
@@ -136,10 +141,10 @@
 
 			cfg.selectbox.focus(function(e) {
 				_isFocused = true;
-				$customSelect.addClass("focused");
+				$customSelect.addClass(FOCUSED_CLASS);
 			}).blur(function(e){
 				_isFocused = false;
-				$customSelect.removeClass("focused");
+				$customSelect.removeClass(FOCUSED_CLASS);
 			});
 
 			if( _useDefaultBehavior ) {
@@ -175,7 +180,7 @@
 				if(e.target.tagName.toLowerCase() != "dd") {
 					$target = $target.parents("dd");
 				}
-				$target.addClass("hovered");
+				$target.addClass(HOVERED_CLASS);
 			});
 
 			$dds.on("mouseout", function(e) {
@@ -183,7 +188,7 @@
 				if(e.target.tagName.toLowerCase() != "dd") {
 					$target = $target.parents("dd");
 				}
-				$target.removeClass("hovered");
+				$target.removeClass(HOVERED_CLASS);
 			});
 		}
 
@@ -289,7 +294,7 @@
 
 		this.disable = function() {
 			_isEnabled = false;
-			$customSelect.addClass("disabled");
+			$customSelect.addClass(DISABLED_CLASS);
 			cfg.selectbox.attr("disabled", "disabled");
 		};
 
@@ -299,7 +304,7 @@
 
 		this.enable = function() {
 			_isEnabled = true;
-			$customSelect.removeClass("disabled");
+			$customSelect.removeClass(DISABLED_CLASS);
 			cfg.selectbox.removeAttr("disabled");
 		};
 
@@ -308,7 +313,7 @@
 		 */
 
 		this.close = function() {
-			$customSelect.removeClass("select-open");
+			$customSelect.removeClass(SELECT_OPEN_CLASS);
 			$customSelect.css({"z-index": cfg.zIndex});
 			_isOpen = false;
 		};
@@ -323,7 +328,7 @@
 				cfg.manager.close();
 			}
 
-			$customSelect.addClass("select-open");
+			$customSelect.addClass(SELECT_OPEN_CLASS);
 
 			if(self.scrollpane) {
 				self.scrollpane.data('jsp').scrollToY($customSelect.find(".selected").position().top);
@@ -340,8 +345,8 @@
 
 		this.jumpToIndex = function(index) {
 			cfg.selectbox.get(0).selectedIndex = index;
-			$customSelect.find(".selected").removeClass("selected");
-			$customSelect.find(".itm-" + index).addClass("selected");
+			$customSelect.find(".selected").removeClass(SELECTED_CLASS);
+			$customSelect.find(".itm-" + index).addClass(SELECTED_CLASS);
 			_updateValue($customSelect.find(".itm-" + index).html());
 		};
 
