@@ -72,7 +72,7 @@
 
 		function init() {
 			// TODO: don't use userAgent matching to detect defaulting to device specific behavior
-			_useDefaultBehavior = navigator.userAgent.match(/iPad|iPhone|Android|IEMobile|BlackBerry/i) ? true : false;
+			_useDefaultBehavior = navigator.hasOwnProperty('screenOrientation');
 
 			if( _useDefaultBehavior ) {
 				cfg.selectbox.addClass("use-default");
