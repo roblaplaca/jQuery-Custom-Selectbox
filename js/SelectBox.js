@@ -78,11 +78,14 @@
 				cfg.selectbox.addClass("use-default");
 			}
 
-			var selectId = "";
+			var selectId = "",
+				selectedClass = cfg.selectbox.attr("class");
+				
 			if(typeof cfg.selectbox.attr("id") !== "undefined") {
 				selectId = 'id="select-'+cfg.selectbox.attr("id")+'"';
 			}
-			cfg.selectbox.wrap('<div class="customSelect" '+selectId+' />');
+
+			cfg.selectbox.wrap('<div class="customSelect '+selectedClass+'" '+selectId+' />');
 
 			$customSelect = cfg.selectbox.parents(".customSelect");
 			$options = cfg.selectbox.find("option");
