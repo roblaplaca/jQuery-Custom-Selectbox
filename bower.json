@@ -1,0 +1,30 @@
+{
+  "name": "jQuery-Custom-Selectbox",
+  "version": "2.0.0",
+  "homepage": "https://github.com/roblaplaca/jQuery-Custom-Selectbox",
+  "authors": [
+    "(Rob LaPlaca <rob.laplaca@gmail.com>)"
+  ],
+  "description": "SelectBox replacement using jQuery. Hides the selectbox and replaces it with an accessible js version. All you need to do is style it.",
+  "main": "js/SelectBox.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "selectbox",
+    "custom-selectbox",
+    "jquery-selectbox",
+    "jquery-custom-selectbox",
+    "custom",
+    "jquery"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
