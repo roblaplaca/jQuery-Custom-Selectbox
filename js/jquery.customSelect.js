@@ -74,7 +74,7 @@
             var selectId = "",
                 selectedClass = cfg.selectbox.attr("class");
                 
-            if(typeof cfg.selectbox.attr("id") !== "undefined") {
+            if ( typeof cfg.selectbox.attr("id") !== 'undefined' ) {
                 selectId = 'id="select-'+cfg.selectbox.attr("id")+'"';
             }
 
@@ -93,9 +93,6 @@
             $selectedValue = $customSelect.find(".selectedValue");
             $selectValueWrap = $customSelect.find(".selectValueWrap");
             $selectList = $customSelect.find(".selectList");
-
-            // $customSelect.width(cfg.width);
-            // $dl.width(cfg.width - 2);
 
             $document.on('customSelect.close', self.close);
 

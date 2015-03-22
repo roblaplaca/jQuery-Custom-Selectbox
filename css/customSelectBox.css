@@ -7,8 +7,8 @@
 .customSelect .selectedValue {
   padding: 5px 10px;
   margin-bottom: 0;
-  line-height: 1.2;
-  color: #333333;
+  line-height: 1.25;
+  color: #333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 
   cursor: pointer;
@@ -112,8 +112,14 @@
 
 /* Get rid of the has-js dependency */
 .has-js select.custom {
-	position: absolute;
-	left: -999em;
+    position: absolute;
+    background-color: transparent;
+    width: 0;
+    left: 4px;
+    top: 4px;
+    opacity: .4;
+    outline: none;
+    border: none;
 }
 .has-js select.custom.use-default {
 	position: absolute;
@@ -125,7 +131,7 @@
 	-webkit-appearance:none;
 	opacity: 0;
 	/* prevents iOS from zooming in on field */
-	font-size: 16px;
+	font-size: 50px;
 }
 
 .customSelect.focused .selectedValue {
