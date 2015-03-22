@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Custom SelectBox</title>
-		<link rel="stylesheet" href="../css/jquery.jscrollpane.css" />
+		<link rel="stylesheet" href="../bower_components/jScrollPane/style/jquery.jscrollpane.css" />
 		<link rel="stylesheet" href="../css/customSelectBox.css" />
 		<!-- example.css is throwaway code for demoing -->
 		<link rel="stylesheet" href="../css/example.css" />
@@ -18,163 +18,162 @@
 			SelectBox replacement using jQuery. Hides the selectbox and replaces it with an accessible js version. All you need to do is style it. Also supports background images on individual options.
 		</p>
 
+		<section>
+			<h2>Basic Select</h2>
+			<select name="option-select" class="custom">
+				<option value="">Select an Option</option>
+				<option value="1">Option 1</option>
+				<option value="2">Option 2</option>
+				<option value="3">Option 3</option>		
+			</select>
+		</section>
 		
-		<h2>Basic Select</h2>
-		<select name="option-select" class="custom">
-			<option value="">Select an Option</option>
-			<option value="1">Option 1</option>
-			<option value="2">Option 2</option>
-			<option value="3">Option 3</option>		
-		</select>
-		
-		<br />
-		<br />
-		
-		<h2>Select with Scrollbar</h2>
-		<select name="country1" class="custom">
-			<option>Select a Country</option>
-		  <option value="Argentina">Argentina</option>
-		  <option value="Australia">Australia</option>
-		  <option value="Austria">Austria</option>
-		  <option value="Belgium">Belgium</option>
-		  <option value="Brazil">Brazil</option>
-		  <option value="Canada">Canada</option>
-		  <option value="China">China</option>
-		  <option value="Croatia">Croatia</option>
-		  <option value="Denmark">Denmark</option>
-		  <option value="Finland">Finland</option>
-		  <option value="France">France</option>
-		  <option value="Germany">Germany</option>
-		  <option value="Greece">Greece</option>
-		  <option value="Hungary">Hungary</option>
-		  <option value="India">India</option>
-		  <option value="Ireland">Ireland</option>
-		  <option value="Israel">Israel</option>
-		  <option value="Italy">Italy</option>
-		  <option value="Japan">Japan</option>
-		  <option value="Korea">Korea</option>
-		  <option value="Mexico">Mexico</option>
-		  <option value="Netherlands">Netherlands</option>
-		  <option value="Norway">Norway</option>
-		  <option value="Poland">Poland</option>
-		  <option value="Russia">Russia</option>
-		  <option value="Singapore">Singapore</option>
-		  <option value="Slovakia">Slovakia</option>
-		  <option value="Slovenia">Slovenia</option>
-		  <option value="Spain">Spain</option>
-		  <option value="Sweden">Sweden</option>
-		  <option value="Switzerland">Switzerland</option>
-		  <option value="Turkey">Turkey</option>
-		  <option value="United Kingdom">United Kingdom</option>
-		  <option value="United States">United States</option>
-		  <option value="APAC">APAC</option>
-		  <option value="CLA">Caribbean, Latin America</option>
-		  <option value="EMEA">EMEA</option>
-		  <option value="MENA">MENA</option>
-		  <option value='worldwide'>World</option>
-		</select>
+		<section>
+			<h2>Select with Scrollbar</h2>
+			<select name="country1" class="custom">
+				<option>Select a Country</option>
+				<option value="Argentina">Argentina</option>
+				<option value="Australia">Australia</option>
+				<option value="Austria">Austria</option>
+				<option value="Belgium">Belgium</option>
+				<option value="Brazil">Brazil</option>
+				<option value="Canada">Canada</option>
+				<option value="China">China</option>
+				<option value="Croatia">Croatia</option>
+				<option value="Denmark">Denmark</option>
+				<option value="Finland">Finland</option>
+				<option value="France">France</option>
+				<option value="Germany">Germany</option>
+				<option value="Greece">Greece</option>
+				<option value="Hungary">Hungary</option>
+				<option value="India">India</option>
+				<option value="Ireland">Ireland</option>
+				<option value="Israel">Israel</option>
+				<option value="Italy">Italy</option>
+				<option value="Japan">Japan</option>
+				<option value="Korea">Korea</option>
+				<option value="Mexico">Mexico</option>
+				<option value="Netherlands">Netherlands</option>
+				<option value="Norway">Norway</option>
+				<option value="Poland">Poland</option>
+				<option value="Russia">Russia</option>
+				<option value="Singapore">Singapore</option>
+				<option value="Slovakia">Slovakia</option>
+				<option value="Slovenia">Slovenia</option>
+				<option value="Spain">Spain</option>
+				<option value="Sweden">Sweden</option>
+				<option value="Switzerland">Switzerland</option>
+				<option value="Turkey">Turkey</option>
+				<option value="United Kingdom">United Kingdom</option>
+				<option value="United States">United States</option>
+				<option value="APAC">APAC</option>
+				<option value="CLA">Caribbean, Latin America</option>
+				<option value="EMEA">EMEA</option>
+				<option value="MENA">MENA</option>
+				<option value='worldwide'>World</option>
+			</select>
+		</section>
 
-		<br />
-		<br />
+		<section>
+			<h2>Opt Group Support</h2>
+			<p>The optgroup label attribute appears in the list in italics like a real select</p>
+			<select name="country2" class="custom">
+			  <optgroup label='Countries'>
+				  <option value="Argentina">Argentina</option>
+				  <option value="Australia">Australia</option>
+				  <option value="Austria">Austria</option>
+				  <option value="Belgium">Belgium</option>
+				  <option value="Brazil">Brazil</option>
+				  <option value="Canada">Canada</option>
+				  <option value="China">China</option>
+				  <option value="Croatia">Croatia</option>
+				  <option value="Denmark">Denmark</option>
+				  <option value="Finland">Finland</option>
+				  <option value="France">France</option>
+				  <option value="Germany">Germany</option>
+				  <option value="Greece">Greece</option>
+				  <option value="Hungary">Hungary</option>
+				  <option value="India">India</option>
+				  <option value="Ireland">Ireland</option>
+				  <option value="Israel">Israel</option>
+				  <option value="Italy">Italy</option>
+				  <option value="Japan">Japan</option>
+				  <option value="Korea">Korea</option>
+				  <option value="Mexico">Mexico</option>
+				  <option value="Netherlands">Netherlands</option>
+				  <option value="Norway">Norway</option>
+				  <option value="Poland">Poland</option>
+				  <option value="Russia">Russia</option>
+				  <option value="Singapore">Singapore</option>
+				  <option value="Slovakia">Slovakia</option>
+				  <option value="Slovenia">Slovenia</option>
+				  <option value="Spain">Spain</option>
+				  <option value="Sweden">Sweden</option>
+				  <option value="Switzerland">Switzerland</option>
+				  <option value="Turkey">Turkey</option>
+				  <option value="United Kingdom">United Kingdom</option>
+				  <option value="United States">United States</option>
+			  </optgroup>
+			  <optgroup label='Regions'>
+				  <option value="APAC">APAC</option>
+				  <option value="CLA">Caribbean, Latin America</option>
+				  <option value="EMEA">EMEA</option>
+				  <option value="MENA">MENA</option>
+			  </optgroup>
+			  <option value='worldwide'>World</option>
+			</select>
+		</section>
 		
-		<h2>Opt Group Support</h2>
-		<p>The optgroup label attribute appears in the list in italics like a real select</p>
-		<select name="country2" class="custom">
-		  <optgroup label='Countries'>
-			  <option value="Argentina">Argentina</option>
-			  <option value="Australia">Australia</option>
-			  <option value="Austria">Austria</option>
-			  <option value="Belgium">Belgium</option>
-			  <option value="Brazil">Brazil</option>
-			  <option value="Canada">Canada</option>
-			  <option value="China">China</option>
-			  <option value="Croatia">Croatia</option>
-			  <option value="Denmark">Denmark</option>
-			  <option value="Finland">Finland</option>
-			  <option value="France">France</option>
-			  <option value="Germany">Germany</option>
-			  <option value="Greece">Greece</option>
-			  <option value="Hungary">Hungary</option>
-			  <option value="India">India</option>
-			  <option value="Ireland">Ireland</option>
-			  <option value="Israel">Israel</option>
-			  <option value="Italy">Italy</option>
-			  <option value="Japan">Japan</option>
-			  <option value="Korea">Korea</option>
-			  <option value="Mexico">Mexico</option>
-			  <option value="Netherlands">Netherlands</option>
-			  <option value="Norway">Norway</option>
-			  <option value="Poland">Poland</option>
-			  <option value="Russia">Russia</option>
-			  <option value="Singapore">Singapore</option>
-			  <option value="Slovakia">Slovakia</option>
-			  <option value="Slovenia">Slovenia</option>
-			  <option value="Spain">Spain</option>
-			  <option value="Sweden">Sweden</option>
-			  <option value="Switzerland">Switzerland</option>
-			  <option value="Turkey">Turkey</option>
-			  <option value="United Kingdom">United Kingdom</option>
-			  <option value="United States">United States</option>
-		  </optgroup>
-		  <optgroup label='Regions'>
-			  <option value="APAC">APAC</option>
-			  <option value="CLA">Caribbean, Latin America</option>
-			  <option value="EMEA">EMEA</option>
-			  <option value="MENA">MENA</option>
-		  </optgroup>
-		  <option value='worldwide'>World</option>
-		</select>
+		<section>
+			<h2>Icon support</h2>
+			<p>
+				If an option has a classname, when the option is rendered an extra 
+				span with that class will get injected into the generated html of the
+				select. This can then be styled however you like. 
+			</p>
+			<select class="custom" name="countriesFlag">
+			  <option class="usa">USA</option>
+			  <option class="italy">Italy</option>
+			  <option class="france">France</option>
+			  <option class="germany">Germany</option>
+			</select>
+		</section>
+
+		<section>
+			<h2>And... one that has disabled options</h2>
+			<select name="option-select" class="custom">
+				<option value="">Select an Option</option>
+				<option value="1">Option 1</option>
+				<option value="2" disabled>Option 2</option>
+				<option value="3">Option 3</option>
+				<option value="4" disabled>Option 4</option>
+				<option value="5">Option 5</option>
+				<option value="6">Option 6</option>
+			</select>
+		</section>
+
 		
-		<br />
-		<br />
-		
-		<h2>Icon support</h2>
-		<p>
-			If an option has a classname, when the option is rendered an extra 
-			span with that class will get injected into the generated html of the
-			select. This can then be styled however you like. 
-		</p>
-		<select class="custom" name="countriesFlag">
-		  <option class="usa">USA</option>
-		  <option class="italy">Italy</option>
-		  <option class="france">France</option>
-		  <option class="germany">Germany</option>
-		</select>
+		<script src="../bower_components/requirejs/require.js"></script>
+		<script>
+			/**
+			 * NOTE: you don't have to use require, it's just an option. 
+			 * You could also just include jScrollPane and jquery.mousewheel
+			 * and it will work too. 
+			 */
 
-		<br />
-		<br />
+			require.config({
+				paths: {
+					'jquery': '../bower_components/jquery/dist/jquery',
+					'jquery.jscrollpane': '../bower_components/jScrollPane/script/jquery.jscrollpane',
+					'jquery.mousewheel': '../bower_components/jScrollPane/script/jquery.mousewheel',
+					'jquery.customSelect': '../js/jquery.customSelect'
+				}
+			});
 
-		<h2>And... one that has disabled options</h2>
-		<select name="option-select" class="custom">
-			<option value="">Select an Option</option>
-			<option value="1">Option 1</option>
-			<option value="2" disabled>Option 2</option>
-			<option value="3">Option 3</option>
-			<option value="4" disabled>Option 4</option>
-			<option value="5">Option 5</option>
-			<option value="6">Option 6</option>
-		</select>
-
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<!-- 
-		<script src="../js/jScrollPane.js"></script>
-		<script src="../js/jquery.mousewheel.js"></script>
-		<script src="../js/SelectBox.js"></script>
-		-->
-		<script src="../js/jquery.customSelect.js"></script>
-		<script>	
-			$(function() {
-				
-				$('select.custom').customSelect();
-
-				// $("select.custom").each(function() {					
-				// 	var sb = new SelectBox({
-				// 		selectbox: $(this),
-				// 		height: 150,
-				// 		width: 200
-				// 	});
-				// });
-				
+			require(['jquery', 'jquery.customSelect'], function($) {
+				$('select.custom').customSelect({
+					height: 150
+				});
 			});
 		</script>
 	</body>

@@ -6,7 +6,10 @@
     "(Rob LaPlaca <rob.laplaca@gmail.com>)"
   ],
   "description": "SelectBox replacement using jQuery. Hides the selectbox and replaces it with an accessible js version. All you need to do is style it.",
-  "main": "js/SelectBox.js",
+  "main": [
+    "src/js/jquery.customSelect.js",
+    "src/css/jquery.customSelect.css"
+  ],
   "moduleType": [
     "amd"
   ],
@@ -26,5 +29,13 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "jquery": ">=1.8.0",
+    "jScrollPane": "latest",
+    "jquery-mousewheel": "latest"
+  },
+  "devDependencies": {
+    "requirejs": "~2.1.16"
+  }
 }

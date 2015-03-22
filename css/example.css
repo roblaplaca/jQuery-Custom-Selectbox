@@ -7,7 +7,13 @@ h2 { font-size: 16px; }
 p { font-size: 12px; }
 #example-1 .customSelect { clear: both; margin-bottom: 10px; }
 #example-2 .cities dd { padding: 0 5px; }
-
+section {
+	padding: 13px 0 20px 0;
+	border-bottom: 1px solid #ccc;
+}
+section .customSelect {
+	max-width: 350px;
+}
 /* COUNTRY SELECTBOX */
 /* This should be a sprite... but this is quicker for examples sake */
 dd span, .selectedValue span {
