@@ -46,16 +46,16 @@
 
         var $document, $customSelect, $selectedValue, 
             $selectValueWrap, $selectList, $dl, $options,
-            FOCUSED_CLASS = "focused",
-            SELECTED_CLASS = "selected",
-            SELECT_OPEN_CLASS = "select-open",
-            DISABLED_CLASS = "disabled",
-            HOVERED_CLASS = "hovered",
+            FOCUSED_CLASS = 'focused',
+            SELECTED_CLASS = 'selected',
+            SELECT_OPEN_CLASS = 'select-open',
+            DISABLED_CLASS = 'disabled',
+            HOVERED_CLASS = 'hovered',
             _useDefaultBehavior = false,
             _isOpen = false,
             _isEnabled = true,
             _isFocused = false,
-            _selectedValue = "";
+            _selectedValue = '';
 
         /**
          * @constructor
@@ -68,33 +68,33 @@
             _useDefaultBehavior = navigator.userAgent.match(/iPad|iPhone|Android|IEMobile|BlackBerry/i) ? true : false;
 
             if( _useDefaultBehavior ) {
-                cfg.selectbox.addClass("use-default");
+                cfg.selectbox.addClass('use-default');
             }
 
             var selectId = "",
-                selectedClass = cfg.selectbox.attr("class");
+                selectedClass = cfg.selectbox.attr('class');
                 
-            if ( typeof cfg.selectbox.attr("id") !== 'undefined' ) {
-                selectId = 'id="select-'+cfg.selectbox.attr("id")+'"';
+            if (typeof cfg.selectbox.attr('id') !== 'undefined') {
+                selectId = 'id="select-' + cfg.selectbox.attr('id') + '"';
             }
 
-            cfg.selectbox.wrap('<div class="customSelect '+selectedClass+'" '+selectId+' />');
+            cfg.selectbox.wrap('<div class="customSelect ' + selectedClass + '" ' + selectId + ' />');
 
-            $customSelect = cfg.selectbox.parents(".customSelect");
-            $options = cfg.selectbox.find("option");
+            $customSelect = cfg.selectbox.parents('.customSelect');
+            $options = cfg.selectbox.find('option');
 
             var selectListHTML = ['<div class="selectList"><div class="selectListOuterWrap"><div class="selectListInnerWrap"><div class="selectListTop"></div><dl>'];
             selectListHTML.push(_renderOptions());
             selectListHTML.push('</dl><div class="selectListBottom"></div></div></div></div>');
 
-            $customSelect.append('<div class="selectValueWrap"><div class="selectedValue">'+_selectedValue+'</div> <span class="caret"></span> </div>' + selectListHTML.join(""));
+            $customSelect.append('<div class="selectValueWrap"><div class="selectedValue">' + _selectedValue + '</div> <span class="caret"></span> </div>' + selectListHTML.join(''));
 
-            $dl = $customSelect.find("dl");
-            $selectedValue = $customSelect.find(".selectedValue");
-            $selectValueWrap = $customSelect.find(".selectValueWrap");
-            $selectList = $customSelect.find(".selectList");
+            $dl = $customSelect.find('dl');
+            $selectedValue = $customSelect.find('.selectedValue');
+            $selectValueWrap = $customSelect.find('.selectValueWrap');
+            $selectList = $customSelect.find('.selectList');
 
-            $document.on('customSelect.close', self.close);
+            $document.on('customSelect.close', close);
 
             _bindEvents();
         }
@@ -107,12 +107,12 @@
             $selectValueWrap.click(function() {
                 if(_isOpen) {
                     cfg.selectbox.focus();
-                    self.close();
+                    close();
                 } else if(_isEnabled) {
                     if( _useDefaultBehavior ) {
                         cfg.selectbox.focus();
                     } else {
-                        self.open();
+                        open();
                     }
                 }
             });
@@ -121,16 +121,16 @@
             $dl.click(function(e) {
                 var $target = $(e.target);
 
-                if($target.is("dd") || $target.parents("dd")) {
-                    if(e.target.tagName.toLowerCase() != "dd") {
-                        $target = $target.parents("dd");
+                if ($target.is('dd') || $target.parents('dd')) {
+                    if (e.target.tagName.toLowerCase() !== 'dd') {
+                        $target = $target.parents('dd');
                     }
 
-                    if(!$target.hasClass(DISABLED_CLASS) && $target.get(0)) {
-                        self.jumpToIndex($target.get(0).className.split(" ")[0].split("-")[1]);
-                        self.close();
+                    if (!$target.hasClass(DISABLED_CLASS) && $target.get(0)) {
+                        jumpToIndex($target.get(0).className.split(" ")[0].split("-")[1]);
+                        close();
 
-                        if( ! _useDefaultBehavior ) {
+                        if (! _useDefaultBehavior) {
                             cfg.selectbox.focus();
                         }
                     }
@@ -146,20 +146,21 @@
             });
 
             cfg.selectbox.change(function(e) {
-                _updateValue( $(this).find("option:selected").html() );
+                _updateValue($(this).find("option:selected").html());
             });
 
             cfg.selectbox.keyup(function(e){
-                self.close();
+                close();
                 $options.each(function(i, itm){     
                     if(itm.selected) {
-                        self.jumpToIndex(i);
+                        jumpToIndex(i);
                         return false;
                     }
                 });
             });
 
             _bindHover();
+            bindAPI();
         }
 
         /**
@@ -167,25 +168,35 @@
          */
 
         function _bindHover() {
-            var $dds = $(".customSelect dd");
-            $dds.off("mouseover");
-            $dds.off("mouseout");
+            var $dds = $('.customSelect dd');
+            $dds.off('mouseover');
+            $dds.off('mouseout');
 
-            $dds.on("mouseover", function(e) {
+            $dds.on('mouseover', function(e) {
                 var $target = $(e.target);
-                if(e.target.tagName.toLowerCase() != "dd") {
-                    $target = $target.parents("dd");
+                if(e.target.tagName.toLowerCase() !== 'dd') {
+                    $target = $target.parents('dd');
                 }
                 $target.addClass(HOVERED_CLASS);
             });
 
-            $dds.on("mouseout", function(e) {
+            $dds.on('mouseout', function(e) {
                 var $target = $(e.target);
-                if(e.target.tagName.toLowerCase() != "dd") {
-                    $target = $target.parents("dd");
+                if(e.target.tagName.toLowerCase() !== 'dd') {
+                    $target = $target.parents('dd');
                 }
                 $target.removeClass(HOVERED_CLASS);
             });
+        }
+
+        function bindAPI() {
+            cfg.selectbox.on('sync', sync);
+            cfg.selectbox.on('enable', enable);
+            cfg.selectbox.on('disable', disable);
+            cfg.selectbox.on('close', close);
+            cfg.selectbox.on('open', open);
+            cfg.selectbox.on('jumpToIndex', jumpToIndex);
+            cfg.selectbox.on('jumpToValue', jumpToValue);
         }
 
         /**
@@ -216,7 +227,7 @@
 
                 // render optgroups if present in original select
                 if (optgroup.length > 0 && $this.prev().length === 0){
-                    optionHTML.push('<dt>'+optgroup.attr('label')+'</dt>');
+                    optionHTML.push('<dt>' + optgroup.attr('label') + '</dt>');
                 }
 
                 // if option has a classname add that to custom select as well
@@ -252,13 +263,11 @@
          */
 
         function _setupScrollbar() {
-            if ( cfg.customScrollbar ) {
-                if ( typeof $.fn.jScrollPane === 'undefined' ) {
+            if (cfg.customScrollbar) {
+                if (typeof $.fn.jScrollPane === 'undefined') {
                     throw new Error('jScrollPane is required to use the customScrollbar config property');
                 }
 
-                // console.log('$dl.outerHeight(): ', $dl.height());
-                
                 self.scrollpane = $dl.jScrollPane(cfg.scrollOptions);
             }
         }
@@ -270,10 +279,10 @@
          */
 
         function _truncate(str) {
-            var arr = str.split("</span>");
+            var arr = str.split('</span>');
             var valToTrunc = arr[arr.length - 1];
-            arr[arr.length - 1] = "";
-            var spans = arr.join("</SPAN>");
+            arr[arr.length - 1] = '';
+            var spans = arr.join('</SPAN>');
 
             return spans + cfg.truncate(valToTrunc);
         }
@@ -282,8 +291,8 @@
          * @public
          */
 
-        this.sync = function() {
-            $options = cfg.selectbox.find("option");
+        function sync() {
+            $options = cfg.selectbox.find('option');
             $dl.html(_renderOptions());
             _bindHover();
             _setupScrollbar();
@@ -293,27 +302,27 @@
          * @public
          */
 
-        this.disable = function() {
+        function disable() {
             _isEnabled = false;
             $customSelect.addClass(DISABLED_CLASS);
-            cfg.selectbox.attr("disabled", "disabled");
+            cfg.selectbox.attr('disabled', 'disabled');
         };
 
         /**
          * @public
          */
 
-        this.enable = function() {
+        function enable() {
             _isEnabled = true;
             $customSelect.removeClass(DISABLED_CLASS);
-            cfg.selectbox.removeAttr("disabled");
+            cfg.selectbox.removeAttr('disabled');
         };
 
         /**
          * @public
          */
 
-        this.close = function() {
+        function close() {
             $customSelect.removeClass(SELECT_OPEN_CLASS);
             _isOpen = false;
         };
@@ -322,7 +331,7 @@
          * @public
          */
 
-        this.open = function() {
+        function open() {
             $document.trigger('customSelect.close');
 
             _setupScrollbar();
@@ -330,7 +339,7 @@
             $customSelect.addClass(SELECT_OPEN_CLASS);
 
             if(self.scrollpane) {
-                self.scrollpane.data('jsp').scrollToY($customSelect.find(".selected").position().top);
+                self.scrollpane.data('jsp').scrollToY($customSelect.find('.selected').position().top);
             }
 
             _isOpen = true;
@@ -341,11 +350,14 @@
          * @public
          */
 
-        this.jumpToIndex = function(index) {
-            cfg.selectbox.get(0).selectedIndex = index;
-            $customSelect.find(".selected").removeClass(SELECTED_CLASS);
-            $customSelect.find(".option-" + index).addClass(SELECTED_CLASS);
-            _updateValue($customSelect.find(".option-" + index).html());
+        function jumpToIndex(e, index) {
+            var index = e.isTrigger ? index : e;
+
+            // TODO: detect bad index
+            cfg.selectbox.get(0).selectedIndex = parseInt(index, 10);
+            $customSelect.find('.selected').removeClass(SELECTED_CLASS);
+            $customSelect.find('.option-' + index).addClass(SELECTED_CLASS);
+            _updateValue($customSelect.find('.option-' + index).html());
         };
 
         /**
@@ -354,7 +366,7 @@
          * @public
          */
 
-        this.jumpToValue = function(value) {
+        function jumpToValue(value) {
             var index = -1;
 
             $options.each(function(i) {
@@ -365,13 +377,15 @@
             });
 
             if ( index !== -1 ){
-                self.jumpToIndex(index);
+                jumpToIndex(index);
             }
 
             return index;
         };
 
         init();
+
+        return this;
     };
 
     $.fn[pluginName] = function(options) {
@@ -379,7 +393,7 @@
             if (!$.data( this, 'plugin_' + pluginName )) {
 
                 $(document).click(function(e) {
-                    if($(e.target).parents(".customSelect").size() === 0) {
+                    if($(e.target).parents('.customSelect').size() === 0) {
                         $(document).trigger('customSelect.close');
                     }
                 });

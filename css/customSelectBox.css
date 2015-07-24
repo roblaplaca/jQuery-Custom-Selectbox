@@ -1,3 +1,6 @@
+select.custom {
+    opacity: 0;
+}
 .customSelect { 
 	position: relative;			
 	font-size: 12px;
@@ -82,7 +85,7 @@
 	cursor: default;
 }
 .customSelect .selected {
-	color: #ffffff;
+	color: #fff;
 	text-decoration: none;
 	background-color: #0081c2;
 	background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
@@ -111,17 +114,17 @@
 }
 
 /* Get rid of the has-js dependency */
-.has-js select.custom {
+.customSelect select.custom {
+    opacity: 1;
     position: absolute;
     background-color: transparent;
     width: 0;
     left: 4px;
     top: 4px;
-    opacity: .4;
     outline: none;
     border: none;
 }
-.has-js select.custom.use-default {
+.customSelect select.custom.use-default {
 	position: absolute;
 	left: auto;
 	height: auto;
